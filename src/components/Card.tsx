@@ -5,7 +5,7 @@ const Card = () => {
 		<Box w='100%' borderWidth='1px' borderRadius='lg'>
 			<Flex direction={{ sm: 'column', lg: 'row' }}>
 				<Image
-					src='https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-picture-icon-png-image_695350.jpg'
+					src='https://static.thenounproject.com/png/1087123-200.png'
 					alt='place holder image'
 					w={{ sm: '100%', lg: '20%' }}
 				/>
@@ -30,22 +30,18 @@ const Card = () => {
 						<Button
 							colorScheme='red'
 							variant='outline'
-							// _hover={{ background: 'gray.800' }}
 							mr='4'
 						>
 							Delete
 						</Button>
-						<Link
+						<Button
 							color='white'
-							px='8'
-							py='2'
-							fontWeight='semibold'
 							borderRadius='lg'
 							background='teal.500'
 							_hover={{ background: 'teal' }}
 						>
 							Edit
-						</Link>
+						</Button>
 					</Flex>
 				</Box>
 			</Flex>

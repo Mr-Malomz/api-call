@@ -1,7 +1,12 @@
 import { Button, Flex, Heading, Link } from '@chakra-ui/react';
-// import { Link } from 'react-router-dom';
+import { FC } from 'react';
 
-const Header = () => {
+interface HeaderProp {
+	onOpen: () => void;
+	setIcreate: (state: boolean) => void;
+}
+
+const Header: FC<HeaderProp> = ({ onOpen, setIcreate }) => {
 	return (
 		<Flex
 			as='nav'
@@ -22,6 +27,10 @@ const Header = () => {
 				color='white'
 				background='gray.600'
 				_hover={{ background: 'gray.800' }}
+				onClick={() => {
+					onOpen();
+					setIcreate(true)
+				}}
 			>
 				Create
 			</Button>
