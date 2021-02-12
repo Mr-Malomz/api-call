@@ -3,10 +3,10 @@ import { FC } from 'react';
 
 interface HeaderProp {
 	onOpen: () => void;
-	setIcreate: (state: boolean) => void;
+	setIscreate: (state: boolean) => void;
 }
 
-const Header: FC<HeaderProp> = ({ onOpen, setIcreate }) => {
+const Header: FC<HeaderProp> = ({ onOpen, setIscreate }) => {
 	return (
 		<Flex
 			as='nav'
@@ -29,7 +29,7 @@ const Header: FC<HeaderProp> = ({ onOpen, setIcreate }) => {
 				_hover={{ background: 'gray.800' }}
 				onClick={() => {
 					onOpen();
-					setIcreate(true)
+					setIscreate(true)
 				}}
 			>
 				Create

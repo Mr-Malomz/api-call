@@ -3,11 +3,11 @@ import React, { FC, useState } from 'react';
 import { ModalProp } from '../models/modal.interface';
 import ModalWrap from './ModalWrap';
 
-interface CreateProps extends ModalProp {
-	setIsCreate: (state: boolean) => void;
+interface EditProps extends ModalProp {
+	setIsEdit: (state: boolean) => void;
 }
 
-const Create: FC<CreateProps> = ({ isOpen, onClose, setIsCreate }) => {
+const Edit: FC<EditProps> = ({ isOpen, onClose, setIsEdit }) => {
 	const [value, setValue] = useState({
 		title: '',
 		body: '',
@@ -28,9 +28,9 @@ const Create: FC<CreateProps> = ({ isOpen, onClose, setIsCreate }) => {
 			isOpen={isOpen}
 			onClose={() => {
 				onClose();
-				setIsCreate(false);
+				setIsEdit(false);
 			}}
-			title='Create New Post'
+			title='Edit Post'
 		>
 			<form onSubmit={handleSubmit}>
 				<Box mb='8'>
@@ -58,4 +58,4 @@ const Create: FC<CreateProps> = ({ isOpen, onClose, setIsCreate }) => {
 	);
 };
 
-export default Create;
+export default Edit;

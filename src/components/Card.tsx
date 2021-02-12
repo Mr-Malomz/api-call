@@ -1,6 +1,12 @@
 import { Box, Button, Flex, Image, Link } from '@chakra-ui/react';
+import { FC } from 'react';
 
-const Card = () => {
+interface CardProps {
+	onOpen: () => void;
+	setIsEdit: (state: boolean) => void;
+}
+
+const Card: FC<CardProps> = ({ onOpen, setIsEdit }) => {
 	return (
 		<Box w='100%' borderWidth='1px' borderRadius='lg'>
 			<Flex direction={{ sm: 'column', lg: 'row' }}>
@@ -27,11 +33,7 @@ const Card = () => {
 						architecto
 					</Box>
 					<Flex mt='10' align='center' justify='center'>
-						<Button
-							colorScheme='red'
-							variant='outline'
-							mr='4'
-						>
+						<Button colorScheme='red' variant='outline' mr='4'>
 							Delete
 						</Button>
 						<Button
@@ -39,6 +41,10 @@ const Card = () => {
 							borderRadius='lg'
 							background='teal.500'
 							_hover={{ background: 'teal' }}
+							onClick={() => {
+								onOpen();
+								setIsEdit(true);
+							}}
 						>
 							Edit
 						</Button>
