@@ -1,12 +1,11 @@
 import { Box, Button, Flex, Image, Link } from '@chakra-ui/react';
 import { FC } from 'react';
-import { PostType } from '../models/post.interface';
+import { PostType } from '../models/post.interface'; //add
 
 interface CardProps {
 	onOpen: () => void;
 	setIsEdit: (state: boolean) => void;
-	//add
-	post: PostType;
+	post: PostType; //add
 }
 
 const Card: FC<CardProps> = ({ onOpen, setIsEdit, post }) => {

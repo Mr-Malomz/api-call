@@ -5,7 +5,7 @@ import Card from './components/Card';
 import Create from './components/Create';
 import { useEffect, useState } from 'react';
 import Edit from './components/Edit';
-import { PostType } from './models/post.interface'; //add
+import { PostType } from './models/post.interface';
 import { Post } from './api/api';
 
 function App() {
@@ -13,11 +13,9 @@ function App() {
 	const [isCreate, setIsCreate] = useState(false);
 	const [isEdit, setIsEdit] = useState(false);
 
-	//add
 	const [posts, setPosts] = useState<PostType[]>([]);
 	const [isError, setIsError] = useState<boolean>(false);
 
-	//add
 	useEffect(() => {
 		Post.getPosts()
 			.then((data) => {
@@ -60,11 +58,14 @@ function App() {
 			</div>
 
 			{/* Create post form */}
+			{/* modify create component with posts and setPosts */}
 			{isCreate && (
 				<Create
 					isOpen={isOpen}
 					onClose={onClose}
 					setIsCreate={setIsCreate}
+					posts={posts}
+					setPosts={setPosts}
 				/>
 			)}
 			{isEdit && (
