@@ -1,12 +1,15 @@
 import { Box, Button, Flex, Image, Link } from '@chakra-ui/react';
 import { FC } from 'react';
+import { PostType } from '../models/post.interface';
 
 interface CardProps {
 	onOpen: () => void;
 	setIsEdit: (state: boolean) => void;
+	//add
+	post: PostType;
 }
 
-const Card: FC<CardProps> = ({ onOpen, setIsEdit }) => {
+const Card: FC<CardProps> = ({ onOpen, setIsEdit, post }) => {
 	return (
 		<Box w='100%' borderWidth='1px' borderRadius='lg'>
 			<Flex direction={{ sm: 'column', lg: 'row' }}>
@@ -24,14 +27,9 @@ const Card: FC<CardProps> = ({ onOpen, setIsEdit }) => {
 						lineHeight='tight'
 						isTruncated
 					>
-						Image Title for placeholder element
+						{post.title}
 					</Box>
-					<Box mt='4'>
-						quia et suscipit\nsuscipit recusandae consequuntur
-						expedita et cum\nreprehenderit molestiae ut ut quas
-						totam\nnostrum rerum est autem sunt rem eveniet
-						architecto
-					</Box>
+					<Box mt='4'>{post.body}</Box>
 					<Flex mt='10' align='center' justify='center'>
 						<Button colorScheme='red' variant='outline' mr='4'>
 							Delete

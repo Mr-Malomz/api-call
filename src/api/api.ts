@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { PostType } from '../models/post.interface';
 
-axios.create({
+const instance = axios.create({
 	baseURL: 'http://jsonplaceholder.typicode.com/',
 	timeout: 15000,
 });
@@ -9,10 +9,10 @@ axios.create({
 const responseBody = (response: AxiosResponse) => response.data;
 
 const requests = {
-	get: (url: string) => axios.get(url).then(responseBody),
-	post: (url: string, body: {}) => axios.post(url, body).then(responseBody),
-	put: (url: string, body: {}) => axios.put(url, body).then(responseBody),
-	delete: (url: string) => axios.delete(url).then(responseBody),
+	get: (url: string) => instance.get(url).then(responseBody),
+	post: (url: string, body: {}) => instance.post(url, body).then(responseBody),
+	put: (url: string, body: {}) => instance.put(url, body).then(responseBody),
+	delete: (url: string) => instance.delete(url).then(responseBody),
 };
 
 export const Post = {
