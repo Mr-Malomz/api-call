@@ -1,14 +1,39 @@
 import { Box, Button, Flex, Image, Link } from '@chakra-ui/react';
-import { FC } from 'react';
-import { PostType } from '../models/post.interface'; //add
+import { FC, useState } from 'react';
+import { Post } from '../api/api';
+import { PostType } from '../models/post.interface';
 
 interface CardProps {
 	onOpen: () => void;
 	setIsEdit: (state: boolean) => void;
-	post: PostType; //add
+	post: PostType;
+	setPostID: (id: number) => void;
+	posts: PostType[]; //add
+	setPosts: (updatedPost: PostType[]) => void; //add
 }
 
-const Card: FC<CardProps> = ({ onOpen, setIsEdit, post }) => {
+const Card: FC<CardProps> = ({
+	onOpen,
+	setIsEdit,
+	post,
+	setPostID,
+	posts,
+	setPosts,
+}) => {
+	//add
+	const [isError, setIsError] = useState<boolean>(false);
+
+	const handleDelete = (id: number) => {
+		Post.deletePost(id)
+			.then((data) => {
+				let updatedPost = posts.filter((post) => post.id !== id);
+				setPosts(updatedPost);
+			})
+			.then((err) => {
+				setIsError(true);
+			});
+	};
+
 	return (
 		<Box w='100%' borderWidth='1px' borderRadius='lg'>
 			<Flex direction={{ sm: 'column', lg: 'row' }}>
@@ -30,7 +55,7 @@ const Card: FC<CardProps> = ({ onOpen, setIsEdit, post }) => {
 					</Box>
 					<Box mt='4'>{post.body}</Box>
 					<Flex mt='10' align='center' justify='center'>
-						<Button colorScheme='red' variant='outline' mr='4'>
+						<Button colorScheme='red' variant='outline' mr='4' onClick={() => handleDelete(post.id!)}>
 							Delete
 						</Button>
 						<Button
@@ -41,6 +66,7 @@ const Card: FC<CardProps> = ({ onOpen, setIsEdit, post }) => {
 							onClick={() => {
 								onOpen();
 								setIsEdit(true);
+								setPostID(post.id!); //add
 							}}
 						>
 							Edit
