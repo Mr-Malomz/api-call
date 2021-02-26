@@ -14,3 +14,7 @@ Then run the project using
 ```
 npm start
 ```
+
+Article Link
+
+[Frontend API calls with Typescript and Axios.](https://malomz.medium.com/frontend-api-calls-with-typescript-and-axios-68792d1e63c2)
