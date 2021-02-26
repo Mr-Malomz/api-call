@@ -40,6 +40,7 @@ const Create: FC<CreateProps> = ({ isOpen, onClose, setIsCreate }) => {
 						value={value.title}
 						onChange={handleChange}
 						name='title'
+						required
 					/>
 				</Box>
 				<Box mb='8'>
@@ -48,6 +49,7 @@ const Create: FC<CreateProps> = ({ isOpen, onClose, setIsCreate }) => {
 						value={value.body}
 						onChange={handleChange}
 						name='body'
+						required
 					/>
 				</Box>
 				<Button type='submit' w='100%' colorScheme='teal' mb='8'>
